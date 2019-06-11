@@ -30,5 +30,17 @@ public class ProductServiceImpl  implements ProductService{
 		
 		
 	}
+	/*
+	 * @Override public List<Products> getProductsForUser(long userId) { // TODO
+	 * Auto-generated method stub return productRepository.findById(userId)); }
+	 */
 
+	@Override
+	public List<Products> getProductsForUser(long userId) {
+		// TODO Auto-generated method stub
+		
+		return productRepository.findProductsByUserid(userId);
+		
+	}
+	
 }

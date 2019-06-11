@@ -1,5 +1,7 @@
 package com.ing.test.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -8,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ing.test.entity.Products;
 import com.ing.test.entity.User;
+import com.ing.test.service.ProductService;
 import com.ing.test.service.UserService;
 
 @RestController
@@ -16,7 +20,10 @@ import com.ing.test.service.UserService;
 public class UserController {
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private ProductService productService;
 
+	
 	@PostMapping("/createUser")
 	public User createUser(@RequestBody User user) {
 		return userService.createUser(user);
@@ -33,7 +40,10 @@ public class UserController {
 			}
 		
 	}
-	
+	@GetMapping("/getProducts/{userId}")
+	public List<Products> getProducts(@PathVariable("userId")long userId){
+		return productService.getProductsForUser(userId);
+	}
 
 
 	}

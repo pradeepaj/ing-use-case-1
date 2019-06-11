@@ -1,8 +1,11 @@
 package com.ing.test.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ing.test.entity.Products;
 import com.ing.test.entity.User;
 import com.ing.test.repository.UserRepository;
 
@@ -10,7 +13,7 @@ import com.ing.test.repository.UserRepository;
 public class UserServiceImp implements UserService {
 	@Autowired
 	private UserRepository userRepository;
-
+	
 	@Override
 	public User createUser(User user) {
 		return userRepository.save(user);
@@ -21,6 +24,10 @@ public class UserServiceImp implements UserService {
 		return userRepository.findByNameAndPassword(name, password);
 		
 	}
+
+	
+	
+
 
 }
 
