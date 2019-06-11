@@ -8,39 +8,35 @@ import org.springframework.stereotype.Service;
 import com.ing.test.entity.Products;
 import com.ing.test.repository.ProductRepository;
 
-
-
 @Service
-public class ProductServiceImpl  implements ProductService{
-	
+public class ProductServiceImpl implements ProductService {
+
 	@Autowired
 	private ProductRepository productRepository;
 
-	@Override
 	public Products createUser(Products products) {
-		  return productRepository.save(products);
-		
-		
+		return productRepository.save(products);
+
 	}
 
-	@Override
 	public List<Products> AllProducts() {
-		 return productRepository.findAll();
-	
-		
-		
+		return productRepository.findAll();
+
 	}
 	/*
 	 * @Override public List<Products> getProductsForUser(long userId) { // TODO
 	 * Auto-generated method stub return productRepository.findById(userId)); }
 	 */
 
-	@Override
-	public List<Products> getProductsForUser(long userId) {
-		// TODO Auto-generated method stub
-		
-		return productRepository.findProductsByUserid(userId);
-		
+	public List<Products> getProductsForUser(int userId) {
+
+		return productRepository.findProductsByUserId(userId);
+
 	}
-	
+
+	public Products getProductById(long prodId) {
+
+		return productRepository.getOne(prodId);
+	}
+
 }

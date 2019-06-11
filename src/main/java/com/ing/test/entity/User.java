@@ -2,6 +2,7 @@ package com.ing.test.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,12 +18,20 @@ public class User {
 	private int id;
 	private String name;
 	private String password;
-	@OneToMany
+	@OneToMany(cascade =CascadeType.REMOVE)
 	private List<Products> products;
 	
 
 	public int getId() {
 		return id;
+	}
+
+	public List<Products> getProducts() {
+		return products;
+	}
+
+	public void setProducts(List<Products> products) {
+		this.products = products;
 	}
 
 	public void setId(int id) {

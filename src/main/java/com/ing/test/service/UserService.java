@@ -12,6 +12,8 @@ public interface UserService {
 
 	User validUser(String name, String password);
 
+	void deleteUser(int userid);
+
 	
 	//List<Products> getProductsForUser(long userId);
 

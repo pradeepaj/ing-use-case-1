@@ -1,11 +1,15 @@
 package com.ing.test.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -18,6 +22,9 @@ public class Products {
 	@ManyToOne
 	private User user;
 	
+	@OneToMany(cascade =CascadeType.REMOVE)
+	private List<SubProducts> subProducts;
+
 	
 
 	
@@ -58,6 +65,14 @@ public class Products {
 	@Override
 	public String toString() {
 		return "Products [prdouctId=" + prdouctId + ", productName=" + productName + "]";
+	}
+
+	public List<SubProducts> getSubProducts() {
+		return subProducts;
+	}
+
+	public void setSubProducts(List<SubProducts> subProducts) {
+		this.subProducts = subProducts;
 	}
 	
 
